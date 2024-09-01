@@ -57,3 +57,33 @@ func TestAddProduct(t *testing.T) {
 		t.Errorf("Inventory.Products got %d, want %d", len(inventory.products), 2)
 	}
 }
+
+func TestListProducts(t *testing.T) {
+	product1 := &Product{id: 1, name: "Product 1", price: 100.0}
+	product2 := &Product{id: 2, name: "Product 2", price: 200.0}
+
+	inventory := Inventory{
+		products: []*Product{product1, product2},
+	}
+
+	products := inventory.ListProducts()
+	if len(products) != 2 {
+		t.Errorf("Inventory.ListProducts got %d, want %d", len(products), 2)
+	}
+}
+
+func TestRemoveProducts(t *testing.T) {
+	product1 := &Product{id: 1, name: "Product 1", price: 100.0}
+	product2 := &Product{id: 2, name: "Product 2", price: 200.0}
+
+	inventory := Inventory{
+		products: []*Product{product1, product2},
+	}
+
+	// can remove one product or multiple products
+
+	inventory.RemoveProducts([]int{1})
+	if inventory.GetProductCount() != 1 {
+		t.Errorf("Inventory.RemoveProducts got %d, want %d", inventory.GetProductCount(), 1)
+	}
+}
