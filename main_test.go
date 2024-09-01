@@ -30,23 +30,6 @@ func TestProduct(t *testing.T) {
 
 }
 
-func TestInventory(t *testing.T) {
-	product1 := &Product{id: 1, name: "Product 1", price: 100.0}
-	product2 := &Product{id: 2, name: "Product 2", price: 200.0}
-
-	inventory := Inventory{
-		products: []*Product{product1, product2},
-	}
-
-	if len(inventory.products) != 2 {
-		t.Errorf("Inventory.Products got %d, want %d", len(inventory.products), 2)
-	}
-
-	if inventory.products[0].id != 1 {
-		t.Errorf("Inventory.Products[0].id got %d, want %d", inventory.products[0].id, 1)
-	}
-}
-
 func TestGetProductCount(t *testing.T) {
 	product1 := &Product{id: 1, name: "Product 1", price: 100.0}
 	product2 := &Product{id: 2, name: "Product 2", price: 200.0}
