@@ -25,9 +25,7 @@ func TestProduct(t *testing.T) {
 		if product.price != tt.price {
 			t.Errorf("Product.price got %f, want %f", product.price, tt.price)
 		}
-
 	}
-
 }
 
 func TestGetProductCount(t *testing.T) {
