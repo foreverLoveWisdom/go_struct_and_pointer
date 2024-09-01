@@ -40,3 +40,11 @@ func (inv *Inventory) RemoveProducts(productIDs []int) {
 		return true
 	})
 }
+
+func (inv *Inventory) UpdatePrice(productID int, price float64) {
+	for _, product := range inv.products {
+		if product.id == productID {
+			product.price = price
+		}
+	}
+}

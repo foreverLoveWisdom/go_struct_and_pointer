@@ -77,11 +77,21 @@ func TestRemoveProducts(t *testing.T) {
 	inventory := Inventory{
 		products: []*Product{product1, product2},
 	}
-
-	// can remove one product or multiple products
-
 	inventory.RemoveProducts([]int{1})
 	if inventory.GetProductCount() != 1 {
 		t.Errorf("Inventory.RemoveProducts got %d, want %d", inventory.GetProductCount(), 1)
+	}
+}
+
+func TestUpdatePrice(t *testing.T) {
+	product1 := &Product{id: 1, name: "Product 1", price: 100.0}
+	product2 := &Product{id: 2, name: "Product 2", price: 200.0}
+
+	inventory := Inventory{
+		products: []*Product{product1, product2},
+	}
+	inventory.UpdatePrice(1, 150.0)
+	if inventory.products[0].price != 150.0 {
+		t.Errorf("Inventory.UpdatePrice got %f, want %f", inventory.products[0].price, 150.0)
 	}
 }
